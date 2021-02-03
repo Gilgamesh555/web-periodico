@@ -10,13 +10,13 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      ru: '', 
+      ci: '', 
       name: '',
       f_nac: '',
       email: '',
       password: '',
       password_confirmation: '',
-      tipo: 'est',
+      tipo: 'doc',
       errors: [],
       rsp: '',
     }
@@ -26,10 +26,10 @@ class App extends Component{
         <div >
           <form id="contact-form" onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
-              <label  htmlFor="exampleInputEmail1">RU:</label>
-              <input type="text" class="form-control" value={this.state.ru} onChange={this.onRuChange.bind(this)} />
+              <label  htmlFor="exampleInputEmail1">CI:</label>
+              <input type="text" class="form-control" value={this.state.ci} onChange={this.onCiChange.bind(this)} />
               {/* <p style={{color:'red'}}>{this.state.errors.email!=null ? (this.state.errors.email[0].indexOf('required') != -1 ? 'El campo RU no puede ser vacio' : 'El RU ya esta registrado') : null}</p> */}
-              {<p style={{color: 'red'}}>{this.ruValidation()}</p>}
+              {<p style={{color: 'red'}}>{this.ciValidation()}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Fecha de Nac:</label>
@@ -50,15 +50,15 @@ class App extends Component{
               <label htmlFor="exampleInputPassword1">Confirmar Contrasena:</label>
               <input type="password" className="form-control" value={this.state.password_confirmation} onChange={this.onConfirmPasswordChange.bind(this)} />
             </div>
-            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
             {<p style={{color: 'red'}}>{this.univValidation()}</p>}
             {/* <button type="submit" className="btn btn-primary">Ingresar</button> */}
           </form>
         </div>
     )
   }
-  onRuChange(event) {
-    this.setState({ru: event.target.value})
+  onCiChange(event) {
+    this.setState({ci: event.target.value})
   }
 
   onDateChange(event) {
@@ -82,11 +82,11 @@ class App extends Component{
   }
 
 
-  ruValidation(){
+  ciValidation(){
     if(this.state.errors != null){
-      if(this.state.errors.ru != null){
-        if(this.state.errors.ru[0].indexOf('required') != -1)return 'El campo RU debe ser llenado obligatoriamente'
-        if(this.state.errors.ru[0].indexOf('taken') != -1)return 'El RU ya esta registrado'
+      if(this.state.errors.ci != null){
+        if(this.state.errors.ci[0].indexOf('required') != -1)return 'El campo CI debe ser llenado obligatoriamente'
+        if(this.state.errors.ci[0].indexOf('taken') != -1)return 'El CI ya esta registrado'
       }
     }
     return null
@@ -157,24 +157,25 @@ class App extends Component{
     })
     .then((response) => (response.json()))
     .then((response)=> {
-        // console.log(response)
+        console.log(response)
+        // console.log(this.state.tipo)
         if(response.errors != null){
           this.setState({errors: response.errors});
         }else{
           this.setState({errors: null})
-          fetch(testapi.concat('valian').concat('/').concat(this.state.ru).concat('/').concat(this.state.f_nac))
+          fetch(testapi.concat('valiandoc').concat('/').concat(this.state.ci).concat('/').concat(this.state.f_nac))
           .then(res => res.json())
           .then(
               (response) => {
-                  // console.log(response)
+                  console.log(response)
                   if(response === 'si'){
                     this.setState({rsp: 'si'})
-                    fetch(testapi.concat('rest_uni').concat('/').concat(this.state.ru))
+                    fetch(testapi.concat('rest_doc').concat('/').concat(this.state.ci))
                     .then(res => res.json())
                     .then(
                         (response) => {
-                            // console.log(response)
-                            this.setState({name: response.nombres})
+                            console.log(response)
+                            this.setState({name: response[0].nombre})
                             fetch(localapi.concat('lastregister'), {
                               mode: 'cors',
                               method: "POST",
@@ -187,12 +188,13 @@ class App extends Component{
                             .then((response) => (response.json()))
                             .then((response)=> {
                               if(response.success != null){
-                                // console.log(response)
+                                console.log(response)
                                 $(".modal").modal("hide");
                                 $(".modal-backdrop").remove();
                                 alert("Registro Completo!. Revisa tu correo para Verificar tu Cuenta")
                               }
                               else{
+                                console.log(response);
                                 alert("Error: No se pudo registrar. Contactese con data center")
                               }
                             },
@@ -231,3 +233,7 @@ if (document.getElementById('modal_doc')) {
   ReactDOM.render( <App /> , document.getElementById('modal_doc'));
 }
  
+
+//$nombre = 'BRAVO';
+//ci= 6600856
+//formato 1986-12-04

@@ -27,6 +27,7 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function () {
+        Route::get('tvu', 'HomeController@tvu');
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
     });

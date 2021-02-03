@@ -27,7 +27,7 @@ function App() {
     }, [])
 
     if(data[0] == null){
-        return <div>GAA</div>
+        return <h2>Lo sentimos No es Posible obtener los datos</h2>
     }
 
     return(
@@ -51,7 +51,7 @@ function App() {
                         <tr>  
                             <th scope="row">{data.mineral}</th>  
                             <td>{data.unidad}</td>  
-                            <td>{data.cotizacion_alta}</td>
+                            <td>{data.cotizacion_baja}</td>
                         </tr>  
                     </tbody>
                 ))

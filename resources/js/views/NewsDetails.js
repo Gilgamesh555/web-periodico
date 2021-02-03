@@ -39,7 +39,7 @@ function App({data_id}) {
                         </article>
                     )
                 })}
-                <nav class="blog-pagination justify-content-center d-flex">
+                <nav className="blog-pagination justify-content-center d-flex">
                     {/* <ul class="pagination">
                         <li class="page-item">
                             <a href="#" class="page-link" aria-label="Previous">

@@ -50,7 +50,7 @@ class App extends Component{
               <label htmlFor="exampleInputPassword1">Confirmar Contrasena:</label>
               <input type="password" className="form-control" value={this.state.password_confirmation} onChange={this.onConfirmPasswordChange.bind(this)} />
             </div>
-            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
             {<p style={{color: 'red'}}>{this.univValidation()}</p>}
             {/* <button type="submit" className="btn btn-primary">Ingresar</button> */}
           </form>
@@ -187,7 +187,7 @@ class App extends Component{
                             .then((response) => (response.json()))
                             .then((response)=> {
                               if(response.success != null){
-                                // console.log(response)
+                                console.log(response)
                                 $(".modal").modal("hide");
                                 $(".modal-backdrop").remove();
                                 alert("Registro Completo!. Revisa tu correo para Verificar tu Cuenta")

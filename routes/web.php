@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home.real');
 
 Auth::routes(['verify' => true]);
 
@@ -37,6 +37,8 @@ Route::get('/transmition', 'HomeController@transmition');//Transmisiones de la U
 Route::get('/tvu', 'HomeController@tvu');
 Route::get('/admin', 'HomeController@admin');
 Route::get('/verify', 'AuthController@verifyUser')->name('verify.user');
+
+Route::view('/{route?}', 'adminpub.home');
 // Route::get('info/{id}', 'HomeController@info');//Detalle de la informacion
 
 

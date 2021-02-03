@@ -34,10 +34,10 @@ function App() {
     }
 
     return(	
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
         <div class="container">
             {/* <!-- Brand and toggle get grouped for better mobile display --> */}
-            <a class="navbar-brand logo_h" href="index.html"><img src="/img/logo.png" width="50px" height="50px" /></a>
+            <a class="navbar-brand logo_h" href="/"><img src="/img/logo.png" width="50px" height="50px" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -73,7 +73,7 @@ function App() {
                     </li>
                     <li class="nav-item submenu dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Anuncios</a>
-                        <ul class="dropdown-submenu">
+                        <ul class="dropdown-menu">
                             <li class="nav-item"><a class="nav-link" href="/anuncio/0">General</a></li>
                             {
                                 section.map((index, key) => (
@@ -84,14 +84,15 @@ function App() {
                     </li>
                     <li class="nav-item submenu dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Yo Publico!!</a>
-                        <ul class="dropdown-submenu">
+                        <ul class="dropdown-menu">
                             {/* <button type="button" class="banner_btn" data-toggle="modal" data-target="#staticBackdrop">
                             Suscribete!!<i class="ti-arrow-right"></i>
                             </button> */}
                             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropEst" href="">Registro Estudiante</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropDoc" href="">Registro Docente</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropDoc" href="">Registro Tercero</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropDoc" href="">Iniciar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropTer" href="">Registro Tercero</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/loginpub">Informacion Univ.</a></li>
+                            {/* <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#staticBackdropLogin" href="">Iniciar Sesion</a></li> */}
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/transmition">Transmisiones</a></li>

@@ -39,7 +39,7 @@ function App({data_id}) {
                         </article>
                     )
                 })}
-                <nav class="blog-pagination justify-content-center d-flex">
+                <nav className="blog-pagination justify-content-center d-flex">
                     {/* <ul class="pagination">
                         <li class="page-item">
                             <a href="#" class="page-link" aria-label="Previous">
@@ -141,7 +141,7 @@ function App({data_id}) {
                         </p> */}
                     </div>
                 </div>
-                <div class="navigation-top">
+                <div className="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
                         <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4 people like this</p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">

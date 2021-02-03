@@ -31,7 +31,7 @@ function App({data_id}) {
                         </article>
                     )
                 })}
-                <nav class="blog-pagination justify-content-center d-flex">
+                <nav className="blog-pagination justify-content-center d-flex">
                     <Pagination
                         activePage={data.current_page}
                         totalItemsCount={data.total}
@@ -86,7 +86,7 @@ function App({data_id}) {
     }, [])
 
     if(data[0] == null){
-        return <div>GAA</div>
+        return  <h2>No Existen Transmisiones</h2>
     }
 
     return(	

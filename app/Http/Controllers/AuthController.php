@@ -21,22 +21,64 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $request->validate([
-            'ru' => 'required|string|unique:users',
-            // 'name' => 'required|string',
-            'f_nac' => 'required',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
-
-        $user = new User([
-            'ru' => $request->ru,
-            'f_nac' => $request->f_nac,
-            'name' => $request->name,
-            'email' => $request->email,
-            'verification_code' => sha1(time()),
-            'password' => bcrypt($request->password),
-        ]);
+        if($request->tipo === "est"){
+            $request->validate([
+                'ru' => 'required|string|unique:users',
+                // 'name' => 'required|string',
+                'f_nac' => 'required',
+                'email' => 'required|string|email|unique:users',
+                'password' => 'required|string|confirmed|min:8',
+            ]);
+    
+            $user = new User([
+                'ru' => $request->ru,
+                'f_nac' => $request->f_nac,
+                'name' => $request->name,
+                'email' => $request->email,
+                'verification_code' => sha1(time()),
+                'password' => bcrypt($request->password),
+            ]);
+        }else{
+            if($request->tipo === "doc"){
+                $request->validate([
+                    // 'ru' => 'required|string|unique:users',
+                    'ci' => 'required|string|unique:users',
+                    // 'name' => 'required|string',
+                    'f_nac' => 'required',
+                    'email' => 'required|string|email|unique:users',
+                    'password' => 'required|string|confirmed|min:8',
+                ]);
+        
+                $user = new User([
+                    // 'ru' => $request->ru,
+                    'f_nac' => $request->f_nac,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'verification_code' => sha1(time()),
+                    'password' => bcrypt($request->password),
+                ]); 
+            }else{
+                $request->validate([
+                    // 'ru' => 'required|string|unique:users',
+                    'name' => 'required|string',
+                    'ci' => 'required|string|unique:users',
+                    'f_nac' => 'required',
+                    'email' => 'required|string|email|unique:users',
+                    'password' => 'required|string|confirmed|min:8',
+                ]);
+        
+                $user = new User([
+                    // 'ru' => $request->ru,
+                    'name' => $request->name,
+                    'ci' => $request->ci,
+                    'f_nac' => $request->f_nac,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'verification_code' => sha1(time()),
+                    'password' => bcrypt($request->password),
+                ]); 
+            }
+        }
 
         return response()->json([
             'success' => true,
@@ -47,15 +89,39 @@ class AuthController extends Controller
     }
 
     public function lastregister(Request $request){
- 
-        $user = new User([
-            'ru' => $request->ru,
-            'f_nac' => $request->f_nac,
-            'name' => $request->name,
-            'email' => $request->email,
-            'verification_code' => sha1(time()),
-            'password' => bcrypt($request->password),
-        ]);
+        $user;
+        if($request->tipo === "est"){
+            $user = new User([
+                'ru' => $request->ru,
+                'f_nac' => $request->f_nac,
+                'name' => $request->name,
+                'email' => $request->email,
+                'verification_code' => sha1(time()),
+                'password' => bcrypt($request->password),
+            ]);        
+        }else{
+            if($request->tipo === "doc"){
+                $user = new User([
+                    // 'ru' => $request->ru,
+                    'ci' => $request->ci,
+                    'name' => $request->name,
+                    'f_nac' => $request->f_nac,
+                    'email' => $request->email,
+                    'verification_code' => sha1(time()),
+                    'password' => bcrypt($request->password),
+                ]);   
+            }else{
+                $user = new User([
+                    // 'ru' => $request->ru,
+                    'name' => $request->name,
+                    'ci' => $request->ci,
+                    'f_nac' => $request->f_nac,
+                    'email' => $request->email,
+                    'verification_code' => sha1(time()),
+                    'password' => bcrypt($request->password),
+                ]);     
+            }
+        }
 
         $response = $user->save();   
 
@@ -102,8 +168,8 @@ class AuthController extends Controller
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
-        if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
+        if ($request->remember_me)$token->expires_at = Carbon::now()->addSeconds(120);
+            // $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
         return response()->json([
             'success' => true,
@@ -114,7 +180,8 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
-            )->toDateTimeString()
+            )->toDateTimeString(),
+            'zz' => Carbon::now()->toDateTimeString(),
         ], 201);
     }
 

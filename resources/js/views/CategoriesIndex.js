@@ -34,7 +34,7 @@ function App({data_id}) {
                         </article>
                     )
                 })}
-                <nav class="blog-pagination justify-content-center d-flex">
+                <nav className="blog-pagination justify-content-center d-flex">
                     <Pagination
                         activePage={data.current_page}
                         totalItemsCount={data.total}

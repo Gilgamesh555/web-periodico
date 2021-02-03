@@ -33,3 +33,11 @@ require('./views/NewsDetails')
 require('./views/SectionDetails')
 require('./views/TransmitionIndex')
 require('./views/TVUIndex')
+require('./components/ModalTer')
+require('./components/StartBlog')
+require('./components/ModalLogin')
+
+require('./admin/index')
+
+//gg
+// require('./admin/src/index')

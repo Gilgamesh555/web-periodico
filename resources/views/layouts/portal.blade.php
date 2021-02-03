@@ -62,6 +62,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <body>
 
+    <!--================Login Fail =================-->    
+
+    <!--================Login Fail =================-->
+
     <!--================Header Menu Area =================-->
         <header class="header_area">
             <div id='main_menu' class="main_menu">
@@ -99,7 +103,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Ingresar</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Registrarse como Estudiante</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -120,7 +124,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Ingresar</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Registrarse como Docente UATF</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -140,6 +144,48 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <div class="banner_inner d-flex align-items-center" id="home_banner_area">
         </div>
     </section>
+    {{-- Modal Terceros --}}
+    <div class="modal fade" id="staticBackdropTer" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Registrarse como Tercero</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id='modal_ter'>
+                </div>
+            </div>
+            {{-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div> --}}
+            </div>
+        </div>
+    </div>
+    {{-- Modal Login --}}
+    <div class="modal fade" id="staticBackdropLogin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id='modal_login'>
+                </div>
+            </div>
+            {{-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div> --}}
+            </div>
+        </div>
+    </div>
     <!--================End Home Banner Area =================-->
 
     <!--================Service  Area =================-->
@@ -418,6 +464,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--================ End Pricing Area =================-->
 
     <!--================ Start Blog Area =================-->
+    <div id="indexx"></div>
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -895,16 +942,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {!! Html::script('portal/js/jquery-2.2.4.min.js')!!}
-{!! Html::script('portal/js/popper.js')!!}
+{{-- {!! Html::script('portal/js/popper.js')!!}
 {!! Html::script('portal/js/bootstrap.min.js')!!}
-{!! Html::script('portal/vendors/owl-carousel/owl.carousel.min.js')!!}
-{!! Html::script('portal/js/jquery.ajaxchimp.min.js')!!}
+{!! Html::script('portal/vendors/owl-carousel/owl.carousel.min.js')!!} --}}
+{{-- {!! Html::script('portal/js/jquery.ajaxchimp.min.js')!!}
 {!! Html::script('portal/js/waypoints.min.js')!!}
 {!! Html::script('portal/js/mail-script.js')!!}
 {!! Html::script('portal/js/contact.js')!!}
 {!! Html::script('portal/js/jquery.form.js')!!}
 {!! Html::script('portal/js/jquery.validate.min.js')!!}
-{!! Html::script('portal/js/theme.js')!!}
+{!! Html::script('portal/js/theme.js')!!} --}}
 
 </body>
 
